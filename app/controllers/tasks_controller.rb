@@ -38,8 +38,9 @@ class TasksController < ApplicationController
 
   private
     def task_params
+    params[:completed] = params[:completed] == "1" ? true : false
     # *Strong params*: You need to *whitelist* what can be updated by the user
     # Never trust user data!
-    params.require(:task).permit(:title, :details)
+    params.require(:task).permit(:title, :details, :completed)
     end
 end
